@@ -1,5 +1,4 @@
 "use strict";
-const findSourceMap = require('./findSourceMap');
 const {publishSourcemap} = require('@newrelic/publish-sourcemap');
 
 module.exports = opts => item => {
@@ -15,12 +14,7 @@ module.exports = opts => item => {
         stats
     } = opts;
 
-    const fileObj = assets[item];
-    if (!fileObj.children) {
-        return Promise.resolve();
-    }
-
-    const mapFile = assets[findSourceMap(fileObj.children)];
+    const mapFile = assets[`${item}.map`];
     if (mapFile === undefined || !mapFile.emitted) {
         return Promise.resolve();
     }

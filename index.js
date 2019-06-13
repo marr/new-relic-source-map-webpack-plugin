@@ -13,7 +13,7 @@ class NewRelicPlugin {
         this.nrAdminKey = enforceExists(options, 'nrAdminKey');
         this.staticAssetUrl = enforceExists(options, 'staticAssetUrl');
         this.staticAssetUrlBuilder = options.staticAssetUrlBuilder || staticAssetUrlBuilder;
-        this.extensionRegex = options.extensionRegex || /\.js(\?.+)?/;
+        this.extensionRegex = options.extensionRegex || /\.js$/;
         this.releaseName = options.releaseName || null;
         this.releaseId = options.releaseId || null;
         this.errorCallback = options.errorCallback || this._getDefaultErrorCallback();
